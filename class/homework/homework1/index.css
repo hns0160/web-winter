@@ -1,5 +1,3 @@
-/* Author - Harshil */
-
 *{
 	font-size: medium;
 	font-family: sans-serif;
@@ -8,7 +6,7 @@
 body{
     margin:0px
 }
-/* Is the use of padding the best way to align text/elements in a block? */
+
 #title{
     color:white;
     background-color: rgb(50, 50, 175);
