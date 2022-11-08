@@ -1,0 +1,103 @@
+body{
+    width: 400px;
+
+}
+
+.main{
+    display:flex
+}
+
+#block1{
+    width: 240px;
+    height: 600px;
+    background-color:aqua;
+}
+
+#block2{
+    background-color: blueviolet;
+    width: 160px;
+    height: 440px;
+}
+
+.block-big{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-end;
+    /* justify-content: sp; */
+}
+
+#sub-block-big-1{
+    /* margin-bottom:60px; */
+    flex: basis 25%;
+    flex-grow: 1;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content: flex-end;
+    margin-bottom:30px;
+}
+
+#sub-block-big-2{
+    /* flex-grow for this block assumed to be 3 from the UI layout given */
+    background-color: gray;
+    width: 160px;
+    flex: basis 25%;
+    flex-grow: 3;
+    margin-left:80px;
+    margin-bottom:15px;
+    margin-top:30px;
+}
+
+#sub-block-big-3{
+    margin-top:15px;
+    margin-bottom:15px;
+    flex: basis 25%;
+    flex-grow: 1;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content: flex-end;
+}
+
+#sub-block-big-4{
+    background-color: brown;
+    margin-bottom:30px;
+    margin-top:15px;
+    flex: basis 25%;
+    flex-grow: 1;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content: flex-end;
+    /* margin-top:15px;
+    margin-bottom:30px; */
+}
+
+
+#sub-1-small{
+    width: 30px;
+    background-color: rgb(202, 54, 54);
+}
+
+#sub-1-big{
+    background-color: rgb(79, 31, 31);
+    width: 170px;
+}
+
+#sub-3-small{
+    width: 20px;
+    background-color: rgb(4, 206, 4);
+}
+
+#sub-3-big{
+    background-color: green;
+    width: 180px;
+}
+
+#sub-4-small{
+    width: 30px;
+    background-color: rgb(163, 30, 101);
+}
+
+#sub-4-big{
+    background-color: rgb(72, 2, 91);
+    width: 170px;
+}
+
