@@ -6,7 +6,7 @@ body{
 .main{
     display:flex
 }
-
+/* Initial height of the blocks assumed */
 #block1{
     width: 240px;
     height: 600px;
