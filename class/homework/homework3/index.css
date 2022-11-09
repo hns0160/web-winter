@@ -100,3 +100,13 @@ ul{
 .nav ul:nth-child(2){
   font-size: larger;
 }
+
+.footer{
+  color:white;
+  text-align:right;
+}
+
+.footer p{
+  padding:0;
+  margin:0;
+}
