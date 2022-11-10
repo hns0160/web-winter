@@ -9,7 +9,7 @@
         <div class="content">
             <div class="left">
                 <div class="nav">
-                    <ul>
+                    <ul class="nav-top">
                         <li>1</li>
                         <li>2</li>
                         <li>3</li>
@@ -30,6 +30,14 @@
                         <li>18</li>  
                     </ul>
                 </div>
+                <ul class="nav-bot">
+                    <li>Contact Us</li>
+                    <li>Brochure Request</li>
+                    <li>Specials</li>
+                    <li>Above & Beyond</li>
+                    <li>Press & Praise</li>
+                    <li>800.659.4599</li>
+                </ul>
             </div>
             <div class="right">
                 <div class="heading"> Contact Us </div>
@@ -59,7 +67,8 @@
                         </div>
                         <div class="email">
                             <ul>
-                                <li>Email:info@daitravel.com</li>
+                                <li>Email:
+                                    <a href="google.com" target=_blank>info@daitravel.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,33 +76,39 @@
                         <form class="formm">
                             <label for="name">
                                 Your Name (required)
+                                <br/>
                                 <input id="name" type="text" required />
                             </label>
         
                             <label for="email">
                                 Your Email (required)
+                                <br/>
                                 <input id="email" type="email" required placeholder="example@domain.com" />
                             </label>
         
                             <label for="subject">
                                 Subject
+                                <br/>
                                 <input id="subject" type="text" required />
                             </label>
         
-                            <label for="msg">
+                            <label id="msg-id" for="msg">
                                 Your Message
-                                <input id="msg" type="text" required />
+                                <br/>
+                                <textarea id="msg" type="text" required></textarea>
                             </label>
-        
-                            <button type="submit">Send</button>
+                            <br/>
+                            <!-- <div class="button"><button id="send" type="submit">Send</button></div> -->
+                            <button id="send" type="submit">Send</button>
+                            
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer">
+        <footer>
             <p>2011 all terms & conditions</p>
             <p>8820 wilshire.....</p>
-        </div>
+        </footer>
     </div>
 </body>

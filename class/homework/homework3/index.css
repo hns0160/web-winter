@@ -89,9 +89,11 @@ ul{
   /* background-color: aqua; */
   display:flex;
   flex-direction: column;
+  align-items: flex-start;
+  
 }
 
-.nav{
+/* .nav{
   padding-top:20px;
   padding-left:10px;
   text-align:justify;
@@ -99,14 +101,48 @@ ul{
 
 .nav ul:nth-child(2){
   font-size: larger;
+} */
+
+footer {
+  text-align: right;
+  padding: 3px;
+  color: white;
+  background-color: black;
 }
 
-.footer{
-  color:white;
-  text-align:right;
+.formm > label{
+
+  margin:10px;
+  padding-left:30px
 }
 
-.footer p{
-  padding:0;
-  margin:0;
+/* #msg{
+  width:70%;
+  height:50%;
+  padding:20px 20px;
+  box-sizing: border-box;
+  margin:30px;
+} */
+
+/* .button{
+  padding-left:30px;
+  margin-left:30px;
+} */
+
+#msg-id{
+  margin-bottom:40px
 }
+#send{
+  
+  width:100%;
+}
+
+.nav-top{
+  height:60%;
+  width:100%;
+  margin-bottom:0px;
+  border-bottom:5px solid black;
+}
+.nav-top li {
+  padding:2px
+  }
