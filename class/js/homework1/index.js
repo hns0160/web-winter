@@ -25,7 +25,7 @@ function concat(a,b){
 
 
 console.log(adder(5,8),"add")
-console.log(dividerr(18/9),"divider")
+console.log(dividerr( 18,9),"divider")
 console.log(celsius(15),"convert to celsius")
 console.log(sLength("abcde", "string length"))
 console.log(concat("ball","game"),"concatenation")
