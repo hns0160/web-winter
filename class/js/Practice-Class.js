@@ -1,17 +1,18 @@
-const user = {
-    id: 1,
-    name: "David",
-    email: "dave@gmail.com",
-    address: {
-    mailing: "123 Main St",
-    shipping: "789 Main St"
-    },
-    cart: ["banana", "milk", "napkins"]
-    }
+let number = 0
 
-console.log(user)
-    
-let addGeneral = user["address"]
-addGeneral["general"] = addGeneral["mailing"]
+const increment = () => {
+  number += 1
+  let message = `Incremented to ${number}`
 
-console.log(user)
+  return () => {
+    console.log(message)
+    console.log(`Number: ${number}`)
+  }
+}
+
+const log3 = increment()
+log3()
+const log2 = increment()
+
+
+log2()
