@@ -24,9 +24,9 @@ function App() {
       <br/>
       <br/>
       <br/>
-      {/* <Posts/> */}
+      <Posts/>
       {/* <Users /> */}
-      <UsersB/>
+      {/* <UsersB/> */}
     </div>
 
     

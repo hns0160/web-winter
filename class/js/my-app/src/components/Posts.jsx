@@ -8,15 +8,12 @@ const Posts = () => {
 		fetch("https://jsonplaceholder.typicode.com/posts")
 			.then((response) => {
 				console.log("response", response);
-                let clone = response.clone()
-                console.log(clone.json())
 				return response.json();
 			})
 			.then((result) => {
-				setData(result.slice(0, 2));
+				setData(result.slice(0, 20));
 			})
 			.catch((err) => {
-				console.log("err", err);
 				setErr(true);
 			});
 
@@ -25,7 +22,7 @@ const Posts = () => {
 	if (err) {
 		return (
 			<div>
-				<h1>Comments</h1>
+				<h1>Posts</h1>
 				<p>An unexpected error occured!</p>
 			</div>
 		);
@@ -34,8 +31,7 @@ const Posts = () => {
 	return (
 		<div>
 			<h1>Posts</h1>
-			<ul style={{ border: "1px solid black" }}>
-				{console.log(data)}
+			<ul>
 				{data.map((post) => (
 					<div key={post.id}>
 						<h2>{post.title}:::{post.id}</h2>
