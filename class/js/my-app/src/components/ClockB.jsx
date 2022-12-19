@@ -11,9 +11,10 @@ const ClockB = (props)=>{
     const [intervalDelay,setDelay] = useState(1000)
 
      useEffect (()=>{
+        console.log("hello")
         const timer = setInterval(()=>setDate(newDate()),intervalDelay);
         return () => clearInterval(timer)
-    },[curDate,intervalDelay])
+    },[intervalDelay])
 
     function handleChange(event){
         setDelay(event.target.value)

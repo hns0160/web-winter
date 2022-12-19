@@ -3,6 +3,9 @@ import HomeworkForm from './components/HomeworkForm';
 import Clock from './components/Clock'
 import FormWithInput from './components/FormWithInput';
 import ClockB from './components/ClockB'
+import Posts from './components/Posts';
+import Users from './components/Users';
+import UsersB from './components/UsersB';
 
 function App() {
 
@@ -16,7 +19,14 @@ function App() {
       hello worlds
 
       <br/>
-      <ClockB/>
+      {/* <ClockB/> */}
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      {/* <Posts/> */}
+      {/* <Users /> */}
+      <UsersB/>
     </div>
 
     
