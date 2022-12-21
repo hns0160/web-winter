@@ -28,7 +28,7 @@ const UsersB = () => {
     }
 
     useEffect(()=>{fetchData()},[inputID])
-
+    
     if (err) {
         return (
             <div>
@@ -46,7 +46,6 @@ const UsersB = () => {
             </label>
 
             <br />
-            {console.log(data)}
             <h2>
                 {JSON.stringify(data)}
 

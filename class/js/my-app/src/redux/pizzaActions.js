@@ -1,0 +1,5 @@
+export const openClose = () => ({type:OPENCLOSE})
+export const setPepporoni = (payload) => ({type:SET_PEPPORONI, payload})
+export const setCombo = (payload) => ({type:SET_COMBO, payload})
+export const setCheese = (payload) => ({type:SET_CHEESE, payload})
+export const resetAll = (payload) => ("rest")

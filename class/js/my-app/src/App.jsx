@@ -6,6 +6,7 @@ import ClockB from './components/ClockB'
 import Posts from './components/Posts';
 import Users from './components/Users';
 import UsersB from './components/UsersB';
+import PizzaStore from './components/PizzaStore';
 
 function App() {
 
@@ -15,18 +16,19 @@ function App() {
       sup
       <HomeworkForm />
       <br/>      
-      <FormWithInput/> */}
+      <FormWithInput/>
       hello worlds
 
       <br/>
-      {/* <ClockB/> */}
+      <ClockB/>
       <br/>
       <br/>
       <br/>
       <br/>
       <Posts/>
-      {/* <Users /> */}
-      {/* <UsersB/> */}
+      <Users />
+      <UsersB/> */}
+      <PizzaStore />
     </div>
 
     
