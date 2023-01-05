@@ -22,7 +22,12 @@ const pizzaReducer = (state = initalState, action) => {
 			return { ...state, cheese: parseInt(action.payload) };
 
 		case RESET_ALL:
-			return initalState
+			return {
+				isOpen: false,
+				pepperoni: 0,
+				combo: 0,
+				cheese: 0,
+			};
 
 		default:
 			return state;
