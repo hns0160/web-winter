@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../../components/layout/PageContainer";
@@ -14,11 +14,15 @@ const Todo = () => {
 	});
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const currTodos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
+	// initializaed useRef to store the todos array from localstorage and access it in the component
+	let currTodos = useRef(null);
 
-		if (currTodos.length > 0) {
-			const todoArray = currTodos.filter((todo) => todo.id === todosId);
+
+	useEffect(() => {
+		
+		currTodos.current = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : []
+		if (currTodos.current.length > 0) {
+			const todoArray = currTodos.current.filter((todo) => todo.id === todosId);
 			if (todoArray.length === 1) {
 				setTodo(todoArray[0]);
 			} else {
@@ -54,25 +58,28 @@ const Todo = () => {
 		// update the todo in localStorage and also update the current todo in the state
 		// afterward, toggle edit back to false
 		e.preventDefault();
-		console.log("hello");
+
 
 		// input validation
 		if (update.title.length < 3 || update.desc.length < 3) return;
 
-		const currTodos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
+		// const currTodos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [];
 
-		for (let i = 0; i < currTodos.length; i++) {
-			if (currTodos[i]["id"] === todosId) {
-				currTodos[i]["title"] = update.title;
-				currTodos[i]["description"] = update.desc;
+		// simple for loop to match the id and update the values for title and desc property
+		for (let i = 0; i < currTodos.current.length; i++) {
+			if (currTodos.current[i]["id"] === todosId) {
+				currTodos.current[i]["title"] = update.title;
+				currTodos.current[i]["description"] = update.desc;
 			}
 		}
-
+		
+		// updating todo with the new values after clicking submit
 		setTodo((prevState) => ({ ...prevState, title: update.title, description: update.desc }));
-
-		localStorage.setItem("todos", JSON.stringify(currTodos));
+		
+		// Storing the updated values in todos in localstorage
+		localStorage.setItem("todos", JSON.stringify(currTodos.current));
 		setEditing(false);
-		navigate("/todos");
+		// navigate("/todos");
 	};
 
 	return (
