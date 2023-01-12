@@ -42,37 +42,29 @@ const LoginForm = () => {
 		setErrMsg("");
 		setIsLoading(true);
 
+		// perform final validation
 		const t1 = EMAIL_REGEX.test(email) && email.length <= 50;
 		const t2 = pwd.length >= 4 && pwd.length <= 16;
-
-		const storedEmail = localStorage.getItem("email");
-		const storedPassword = localStorage.getItem("password");
 
 		if (!t1 || !t2) {
 			setErrMsg("Invalid Inputs");
 			setIsLoading(false);
 			return;
 		}
-		console.log("email", email, storedEmail);
-		console.log("password", pwd, storedPassword);
 
-		// Check to see if email and password were registered
-		if (email === storedEmail && pwd === storedPassword) {
-			try {
-				const user = await fakeLogin();
-				setUser(user);
-				// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
-				localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
-				navigate(from, { replace: true });
-			} catch (err) {
-				setErrMsg("The server could not be reached. Please try again later.");
-				setIsLoading(false);
-			}
-		} else {
-			setErrMsg("Username or Password not found. Try again");
+		try {
+			const user = await fakeLogin();
+			setUser(user);
+			// refreshToken is stored in localStorage here, but should be set in an secure/http only cookie
+			localStorage.setItem("refreshToken", `refresh: ${Math.floor(Math.random() * 100)}`);
+			navigate(from, { replace: true });
+		} catch (err) {
+			setErrMsg("The server could not be reached. Please try again later.");
 			setIsLoading(false);
 		}
 	};
+
+	console.log(emailRef);
 
 	return (
 		<>

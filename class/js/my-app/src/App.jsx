@@ -18,6 +18,7 @@ import CommentsPage from "./pages/private/CommentsPage";
 import Todos from "./pages/private/Todos";
 import Todo from "./pages/private/Todo";
 import NewTodo from "./pages/private/NewTodo";
+import Users from "./pages/private/Users";
 
 function App() {
 	return (
@@ -37,7 +38,7 @@ function App() {
 					<Route path="/admin" element={<Admin />} />
 					<Route path="/super-admin" element={<SuperAdmin />} />
 					<Route path="comments" element={<CommentsPage />} />
-
+					<Route path="/users" element={<Users />} />
 					<Route path="/todos" element={<Outlet />}>
 						{/* /todos */}
 						<Route index element={<Todos />} />

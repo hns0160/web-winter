@@ -1,39 +1,36 @@
-import React,{useState,useEffect} from 'react'
+import { useState, useEffect } from "react";
 
-const ClockB = (props)=>{
-
-    function newDate (){
-        let date = new Date();
-        return date.toLocaleTimeString()
-    }
-
-    const [curDate,setDate] = useState(newDate())
-    const [intervalDelay,setDelay] = useState(1000)
-
-     useEffect (()=>{
-        console.log("hello")
-        const timer = setInterval(()=>setDate(newDate()),intervalDelay);
-        return () => clearInterval(timer)
-    },[intervalDelay])
-
-    function handleChange(event){
-        setDelay(event.target.value)
-    }
-
-    return (
-
-    <>
-    Interval Delay: {intervalDelay}
-    <br/>
-    <input value={intervalDelay} onChange={handleChange}></input>
-    <br/>
-    <br/>
-    The time right now is: {curDate} 
-        
-    </>)
-    
-   
-
+function FormattedDate(props) {
+	return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
 }
 
-export default ClockB
+const initDate = new Date();
+
+const ClockB = () => {
+	const [date, setDate] = useState(initDate);
+
+	const tick = () => {
+		setDate(new Date());
+	};
+
+	useEffect(() => {
+		// console.log("useEffect running");
+		// perform core logic (what to run)
+		const timerId = setInterval(() => tick(), 1000);
+
+		// (optional) return a cleanup function
+		return () => {
+			// timerId is captured in a closure
+			clearInterval(timerId);
+		};
+	}, []);
+
+	return (
+		<div>
+			<h1>Hello, World! This is Clock B</h1>
+			<FormattedDate date={date} />
+		</div>
+	);
+};
+
+export default ClockB;

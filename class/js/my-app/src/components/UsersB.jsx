@@ -1,56 +1,54 @@
-import React,{useState,useEffect} from 'react';
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
 
 const UsersB = () => {
-    const [data, setData] = useState([]);
+	const [userId, setUserId] = useState(0);
+	const [user, setUser] = useState(null);
 	const [err, setErr] = useState(false);
-    const [inputID, setInput] = useState("3");
 
-    function handleChange(e){
-        setInput(e.target.value)
-    }
+	const handleChange = (e) => {
+		setUserId(e.target.value);
+	};
 
-    function fetchData(){
-        if (inputID == "0"){
-            setData("data not available")
-        }
-        else {
-            fetch(`https://jsonplaceholder.typicode.com/users/${inputID}`)
-            .then((response) => {
-            return response.json();
-        })
-            .then((result) => {
-            setData(result);
-        })
-            .catch((err) => {
-            setErr(true);
-        });}
-      
-    }
+	// const fetchData = useCallback(async () => {
+	// 	if (userId === 0) return;
 
-    useEffect(()=>{fetchData()},[inputID])
-    
-    if (err) {
-        return (
-            <div>
-                <h1>Users</h1>
-                <p>An unexpected error occured!</p>
-            </div>
-        );
-    }
+	// 	const result = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
+	// 	return result;
+	// }, []);
 
-    return( 
-        <div>
-            <h1>Users List</h1>
-            <label htmlfor = "userID">
-                Enter the user ID you want to fetch: <input id="userID" name="userID" type="number" onChange={handleChange} />
-            </label>
+	useEffect(() => {
+		// declare your data fetching
+		function fetchData(userId) {
+			if (userId === 0) return;
 
-            <br />
-            <h2>
-                {JSON.stringify(data)}
+			axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
+				.then((response) => setUser(response.data))
+				.catch((err) => setErr(true));
+		}
 
-            </h2>
-        </div>
-    )
-}
+		fetchData(userId);
+	}, [userId]);
+
+	if (err) {
+		return (
+			<div>
+				<h1>An unexpected error occurred.</h1>
+			</div>
+		);
+	}
+
+	return (
+		<div>
+			<h1>Users List</h1>
+			<label htmlFor="userId">
+				Enter the user Id you want to fetch: <input id="userId" name="userId" type="number" value={userId} onChange={handleChange} />
+			</label>
+			<br />
+
+			{user?.id && <div>{JSON.stringify(user)}</div>}
+		</div>
+	);
+};
+
 export default UsersB;

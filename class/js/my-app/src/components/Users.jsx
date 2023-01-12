@@ -1,60 +1,51 @@
-import React,{useState,useEffect} from 'react';
+import React from "react";
+import { useState } from "react";
 
+/**
+ * Component implements a similar functionality to a search textbox and will only perform data fetching on button click event.
+ * @returns Users component or an error message.
+ */
 const Users = () => {
-    const [data, setData] = useState([]);
+	const [userId, setUserId] = useState(0);
+	const [user, setUser] = useState(null);
 	const [err, setErr] = useState(false);
-    const [inputID, setInput] = useState("1");
 
-    function handleChange(e){
-        setInput(e.target.value)
-    }
+	const handleChange = (e) => {
+		setUserId(e.target.value);
+	};
 
-    function handleClick(e){
-        console.log(inputID)
+	const handleClick = (e) => {
+		fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+			.then((response) => response.json())
+			.then((result) => setUser(result))
+			.catch((err) => {
+				console.log("err", err);
+				setErr(true);
+			});
+	};
 
-        fetch(`https://jsonplaceholder.typicode.com/users/${inputID}`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((result) => {
-            setData(result);
-        })
-        .catch((err) => {
-            setErr(true);
-        });
-        
-    }
+	if (err) {
+		return (
+			<div>
+				<h1>An unexpected error occurred.</h1>
+			</div>
+		);
+	}
 
-    function getData(inpData){
-        let {name:name2,phone} = inpData;
-        return [name2,":::",phone]
-    }
+	return (
+		<div>
+			<h1>Users List</h1>
+			<label htmlFor="userId">
+				Enter the user Id you want to fetch: <input id="userId" name="userId" type="number" value={userId} onChange={handleChange} />
+			</label>
+			<br />
+			<button type="button" onClick={handleClick}>
+				Fetch User
+			</button>
 
-    if (err) {
-        return (
-            <div>
-                <h1>Users</h1>
-                <p>An unexpected error occured!</p>
-            </div>
-        );
-    }
+			{user?.id && <div>{JSON.stringify(user)}</div>}
+		</div>
+	);
+};
 
-    return( 
-        <div>
-            <h1>Users List</h1>
-            <label htmlfor = "userID">
-                Enter the user ID you want to fetch: <input id="userID" name="userID" type="number" onChange={handleChange} />
-
-            </label>
-
-            <br />
-            <button onClick={handleClick}> Fetch User</button>
-            {console.log(data)}
-            <h2>
-                {/* {JSON.stringify(data)} */}
-                {getData(data)}
-            </h2>
-        </div>
-    )
-}
 export default Users;
